@@ -87,3 +87,9 @@ birthdate <= '1985-12-31';
 -- FROM students, enrollments, classes 
 -- WHERE students.last_name = 'Rohan'
 --   AND classes.class_name = 'PHYS 218';
+
+insert into enrollments (student_id, class_id, grade)
+select * from 
+ (select id from students where first_name='Andre' and last_name='Rohan' limit 1) x
+,(select id from classes where class_name='PHYS 218' limit 1) y
+,(select 'A') z;
